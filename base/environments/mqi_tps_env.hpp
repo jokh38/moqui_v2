@@ -154,6 +154,10 @@ public:
     uint32_t                   scorer_capacity;   ///< Capacity of the scorer.
     bool                       reshape_output;    ///< Flag to reshape the output.
     bool                       sparse_output;     ///< Flag for sparse output format.
+#if defined(__CUDACC__)
+    cudaArray*          phantom_data_array;    ///< CUDA array for texture memory
+    cudaTextureObject_t host_texture_object;   ///< Host-side texture object handle
+#endif
     //    std::default_random_engine beam_rng;
 
 public:
@@ -161,6 +165,10 @@ public:
     /// \param[in] input_name The path to the input parameter file.
     CUDA_HOST
     tps_env(const std::string input_name) : x_environment<R>() {
+#if defined(__CUDACC__)
+        phantom_data_array  = nullptr;
+        host_texture_object = 0;
+#endif
         std::cout << "--------------------------------------------------------------------------------" << std::endl;
         std::cout << "MOQUI SMC Treatment machine model and log-file based MC" << std::endl;
         std::cout << "Modified by Chanil Jeon of Sungkyunkwan University in 2024" << std::endl;
@@ -173,13 +181,16 @@ public:
         mqi::file_parser parser(input_filename, delimeter);
         /// Global parameters
         this->gpu_id = parser.get_int("GPUID", 0);
-        std::cout << "Reading GPU ID.. : Selected GPU ID --> " << this->gpu_id << std::endl; 
+        std::cout << "Reading GPU ID.. : Selected GPU ID --> " << this->gpu_id << std::endl;
 #if defined(__CUDACC__)
         cudaSetDevice(this->gpu_id);
 #endif
         master_seed = parser.get_int("RandomSeed", -1);
         std::cout << "Reading seeds.. : Inserted seed --> " << master_seed << std::endl;
-        if (master_seed < -1) std::cout << "Reading seeds.. : Using negative value generates current time based random seed." << std::endl;
+        if (master_seed < -1)
+            std::cout
+              << "Reading seeds.. : Using negative value generates current time based random seed."
+              << std::endl;
         use_absolute_path = parser.get_bool("UseAbsolutePath", false);
 
         this->num_total_threads = parser.get_int("TotalThreads", -1);
@@ -193,11 +204,14 @@ public:
         if (use_absolute_path) {
             this->parent_dir = parser.get_string("ParentDir", "");
             this->dicom_dir  = parser.get_string("DicomPath", "");
-            this->dicom_dir  = parser.get_string("logFilePath", ""); // Log file dir added in 2023-11-01 by Chanil Jeon
+            this->dicom_dir =
+              parser.get_string("logFilePath", "");   // Log file dir added in 2023-11-01 by Chanil Jeon
         } else {
-            this->parent_dir = parser.get_string("ParentDir", "");
-            this->dicom_dir  = this->parent_dir + "/" + parser.get_string("DicomDir", "");
-            this->logfile_dir  = this->parent_dir + "/" + parser.get_string("logFilePath", ""); // Log file dir added in 2023-11-01 by Chanil Jeon
+            this->parent_dir  = parser.get_string("ParentDir", "");
+            this->dicom_dir   = this->parent_dir + "/" + parser.get_string("DicomDir", "");
+            this->logfile_dir = this->parent_dir + "/" +
+                                parser.get_string("logFilePath",
+                                                  "");   // Log file dir added in 2023-11-01 by Chanil Jeon
         }
 
         //--------------------------------------------------------------------------------------------------
@@ -205,27 +219,30 @@ public:
         this->selectedGantryNumber = parser.get_int("GantryNum", 2);
 
         // If the user defined number is not 1 or 2, basically set to 2
-        if (this->selectedGantryNumber != 1 && this->selectedGantryNumber != 2) this->selectedGantryNumber = 2;
+        if (this->selectedGantryNumber != 1 && this->selectedGantryNumber != 2)
+            this->selectedGantryNumber = 2;
 
         std::cout << "Selected gantry number : " << this->selectedGantryNumber << std::endl;
 
         //--------------------------------------------------------------------------------------------------
 
         // Check if you want to use water phantom geometry
-        this->usingPhantomGeo = parser.get_bool("UsingPhantomGeo", false);
+        this->usingPhantomGeo   = parser.get_bool("UsingPhantomGeo", false);
         this->twoCentimeterMode = parser.get_bool("twoCentimeterMode", false);
-        this->phantomDimX = parser.get_int("PhantomDimX", 200);
-        this->phantomDimY = parser.get_int("PhantomDimY", 200);
-        this->phantomDimZ = parser.get_int("PhantomDimZ", 200);
-        this->phantomUnitX = parser.get_int("PhantomUnitX", 1);
-        this->phantomUnitY = parser.get_int("PhantomUnitY", 1);
-        this->phantomUnitZ = parser.get_int("PhantomUnitZ", 1);
-        this->phantomPositionX = parser.get_int("PhantomPositionX", 1);
-        this->phantomPositionY = parser.get_int("PhantomPositionY", 1);
-        this->phantomPositionZ = parser.get_int("PhantomPositionZ", 1);
+        this->phantomDimX       = parser.get_int("PhantomDimX", 200);
+        this->phantomDimY       = parser.get_int("PhantomDimY", 200);
+        this->phantomDimZ       = parser.get_int("PhantomDimZ", 200);
+        this->phantomUnitX      = parser.get_int("PhantomUnitX", 1);
+        this->phantomUnitY      = parser.get_int("PhantomUnitY", 1);
+        this->phantomUnitZ      = parser.get_int("PhantomUnitZ", 1);
+        this->phantomPositionX  = parser.get_int("PhantomPositionX", 1);
+        this->phantomPositionY  = parser.get_int("PhantomPositionY", 1);
+        this->phantomPositionZ  = parser.get_int("PhantomPositionZ", 1);
 
         // ---------------------------------------------------------------------------------------------
-        if (!parent_dir.empty()) std::cout << "Reading patient directory.. : Patient directory name --> " << parent_dir << std::endl;
+        if (!parent_dir.empty())
+            std::cout << "Reading patient directory.. : Patient directory name --> " << parent_dir
+                      << std::endl;
 
         if (parent_dir.empty()) { throw std::runtime_error("ParentDir is not provided"); }
         if (dicom_dir.empty()) { throw std::runtime_error("DICOM Dir is not provided"); }
@@ -233,8 +250,8 @@ public:
 
         // ---------------------------------------------------------------------------------------------
         /// Source parameters
-        source_type = parser.get_string("SourceType", "FluenceMap");
-        sim_type    = parser.string_to_sim_type(parser.get_string("SimulationType", "perBeam"));
+        source_type           = parser.get_string("SourceType", "FluenceMap");
+        sim_type              = parser.string_to_sim_type(parser.get_string("SimulationType", "perBeam"));
         particles_per_history = parser.get_float("ParticlesPerHistory", -1.0);
 
         // -------------------------------------------------------------------------------------------
@@ -254,12 +271,12 @@ public:
         this->read_structure    = parser.get_bool("ReadStructure", false);
 
         // If user use phantom geometry, override reading structure false
-        if (this->usingPhantomGeo) this->read_structure = false; 
+        if (this->usingPhantomGeo) this->read_structure = false;
 
         if (scoring_mask) {
             save_scorer_map = parser.get_bool("SaveMap", true);
             mask_filenames  = parser.get_string_vector("Mask", ",");
-            if (mask_filenames.size() ==  0) {
+            if (mask_filenames.size() == 0) {
                 throw std::runtime_error("Mask filename is missing");
             }
         } else {
@@ -269,8 +286,11 @@ public:
 
         // --------------------------------------------------
         // Masking file
-        if (mask_filenames.size() > 0) std::cout << "Reading masking file.. : Masking file count --> " << mask_filenames.size() << std::endl;
-        else std::cout << "Reading masking file.. : There is no masking file to read." << std::endl;
+        if (mask_filenames.size() > 0)
+            std::cout << "Reading masking file.. : Masking file count --> "
+                      << mask_filenames.size() << std::endl;
+        else
+            std::cout << "Reading masking file.. : There is no masking file to read." << std::endl;
 
         if (save_scorer_map) {
             scorer_map_prefix = parser.get_string("ScorerMapName", "scorer_map");
@@ -295,9 +315,9 @@ public:
             this->reshape_output = true;
             this->sparse_output  = false;
         }
-        if (output_path.empty()) { throw std::runtime_error("Output directory is not provided."); }
-        else
-        {
+        if (output_path.empty()) {
+            throw std::runtime_error("Output directory is not provided.");
+        } else {
             std::cout << "Setting output.. : Output directory name --> " << output_path << std::endl;
             std::cout << "Setting output.. : Output format --> " << output_format << std::endl;
         }
@@ -317,11 +337,14 @@ public:
             this->scorer_capacity = this->dcm_.dim_.x * this->dcm_.dim_.y * this->dcm_.dim_.z;
         }
 
-        std::string machineName = "";
+        std::string machineName     = "";
         std::string referenceMCName = "";
 
         // Creating treatment machine object from plan information
-        tx = new mqi::treatment_session<R>(dcm_.plan_name, machineName, referenceMCName, this->selectedGantryNumber);
+        tx = new mqi::treatment_session<R>(dcm_.plan_name,
+                                           machineName,
+                                           referenceMCName,
+                                           this->selectedGantryNumber);
         if (sim_type == mqi::PER_BEAM) {
             beam_numbers = parser.get_int_vector("BeamNumbers", ",");
             if (beam_numbers.size() == 0) {
@@ -363,7 +386,10 @@ public:
     /// \brief Destroys the tps_env object.
     CUDA_HOST
     ~tps_env() {
-        ;
+#if defined(__CUDACC__)
+        if (host_texture_object) { cudaDestroyTextureObject(host_texture_object); }
+        if (phantom_data_array) { cudaFreeArray(phantom_data_array); }
+#endif
     }
 
     /// \brief Prints the simulation parameters to the console.
@@ -797,48 +823,44 @@ public:
         // When we use custom phantom geometry, add air geometry to child of the world geometry
         // Therefore, this varaiable gives additional size to geometry container
         int beamlineObjectCorrection = 0;
-        int worldChildCorrection = 0;
+        int worldChildCorrection     = 0;
         //if (this->usingPhantomGeo) phantomGeoCorrection = 1;
-        if (this->usingPhantomGeo)
-        {
-            if (this->twoCentimeterMode)
-            {
-                this->phantomDimX = 400;
-                this->phantomDimY = 1;
-                this->phantomDimZ = 400;
-                this->phantomUnitX = 1.f;
-                this->phantomUnitY = 2.f;
-                this->phantomUnitZ = 1.f;
-                this->phantomPositionX = -200.f;
-                this->phantomPositionY = -1.f;
-                this->phantomPositionZ = -200.f;
+        if (this->usingPhantomGeo) {
+            if (this->twoCentimeterMode) {
+                this->phantomDimX        = 400;
+                this->phantomDimY        = 1;
+                this->phantomDimZ        = 400;
+                this->phantomUnitX       = 1.f;
+                this->phantomUnitY       = 2.f;
+                this->phantomUnitZ       = 1.f;
+                this->phantomPositionX   = -200.f;
+                this->phantomPositionY   = -1.f;
+                this->phantomPositionZ   = -200.f;
                 beamlineObjectCorrection = 1;
-                worldChildCorrection = 3;
-            }
-            else
-            {
+                worldChildCorrection     = 3;
+            } else {
                 beamlineObjectCorrection = 1;
-                worldChildCorrection = 1;
+                worldChildCorrection     = 1;
             }
         }
 
         // Because the program don't calculate anything in world geometry, set rho_mass to 0
-        this->world->geo = new mqi::grid3d<density_t, R>(x, 2, y, 2, z, 2);           
-        this->world->geo->fill_data(0.0); // There is no meaning that add some density to world geometry
+        this->world->geo = new mqi::grid3d<density_t, R>(x, 2, y, 2, z, 2);
+        this->world->geo->fill_data(0.0);   // There is no meaning that add some density to world geometry
         this->world->n_scorers                          = 0;
         this->world->scorers                            = nullptr;
         mqi::beamline<R>            beamline            = this->tx->get_beamline(bnb);
         std::vector<mqi::geometry*> beamline_geometries = beamline.get_geometries();
-        this->world->n_children                         = beamline_geometries.size() + 1 + worldChildCorrection; // Original is + 1. Additional + 1 for air box
-        this->world->children                           = new node_t<R>*[this->world->n_children]; // Beam line geometry + airbox
+        this->world->n_children       = beamline_geometries.size() + 1 + worldChildCorrection;   // Original is + 1. Additional + 1 for air box
+        this->world->children = new node_t<R>*[this->world->n_children];   // Beam line geometry + airbox
 
         ///< Create beamline objects
         mqi::coordinate_transform<R> p_coord = this->tx->get_coordinate(bnb);
         p_coord.angles[3]                    = 90.0;   //iec2dicom angle
-        node_t<R>** beamline_objects         = new node_t<R>*[beamline_geometries.size() + beamlineObjectCorrection];
+        node_t<R>** beamline_objects =
+          new node_t<R>*[beamline_geometries.size() + beamlineObjectCorrection];
 
-        if (this->usingPhantomGeo)
-        {
+        if (this->usingPhantomGeo) {
             p_coord.translation.x = 0.f;
             p_coord.translation.y = 0.f;
             p_coord.translation.z = 0.f;
@@ -849,41 +871,45 @@ public:
             p_coord.angles[3] = 0.f;
         }
 
-        if (this->usingPhantomGeo)
-        {
+        if (this->usingPhantomGeo) {
             // Get snout position from ion control point sequence
-            const mqi::dataset* beamDataset = this->tx->get_beam_dataset(bnb); // Get beam dataset
-            const mqi::dataset* icps = (*beamDataset)("IonControlPointSequence")[0]; // Get isocenter position
-            std::vector<float>  snoutPos;
-            icps->get_values("SnoutPosition", snoutPos); // Get snout position
+            const mqi::dataset* beamDataset = this->tx->get_beam_dataset(bnb);   // Get beam dataset
+            const mqi::dataset* icps =
+              (*beamDataset)("IonControlPointSequence")[0];   // Get isocenter position
+            std::vector<float> snoutPos;
+            icps->get_values("SnoutPosition", snoutPos);   // Get snout position
 
             // Creating airbox between beam start and right before the phantom surface
             // Set air box to end index of beamline object, becuase the simulation calculates sequentially
-            node_t<R>* airBox  = new node_t<R>;
+            node_t<R>* airBox                            = new node_t<R>;
             beamline_objects[beamline_geometries.size()] = airBox;
-            this->world->children[beamline_geometries.size()] = beamline_objects[beamline_geometries.size()];
+            this->world->children[beamline_geometries.size()] =
+              beamline_objects[beamline_geometries.size()];
 
             double airEndPos{};
-            if (this->twoCentimeterMode) airEndPos = 20.f;
-            else airEndPos = this->phantomPositionZ + this->phantomDimZ * phantomUnitZ;
+            if (this->twoCentimeterMode)
+                airEndPos = 20.f;
+            else
+                airEndPos = this->phantomPositionZ + this->phantomDimZ * phantomUnitZ;
 
-            airBox->geo = new grid3d<density_t, R>(-200,
-                                            200,
-                                            2,
-                                            -200,
-                                            200,
-                                            2,
-                                            airEndPos,
-                                            snoutPos[0], // Snout position - gap for calculation
-                                            2,//int((snoutPos[0] - (airEndPos)) / 2) + 1,
-                                            p_coord.rotation);
-            airBox->geo->fill_data(mqi::air_t<R>().rho_mass); // Fill volume with air
-            
+            airBox->geo =
+              new grid3d<density_t, R>(-200,
+                                      200,
+                                      2,
+                                      -200,
+                                      200,
+                                      2,
+                                      airEndPos,
+                                      snoutPos[0],   // Snout position - gap for calculation
+                                      2,             //int((snoutPos[0] - (airEndPos)) / 2) + 1,
+                                      p_coord.rotation);
+            airBox->geo->fill_data(mqi::air_t<R>().rho_mass);   // Fill volume with air
+
             // Air box has no scorer and children
-            airBox->n_scorers = 0;
+            airBox->n_scorers  = 0;
             airBox->n_children = 0;
-            airBox->scorers = nullptr;
-            airBox->children = nullptr;
+            airBox->scorers    = nullptr;
+            airBox->children   = nullptr;
         }
 
         for (int i = 0; i < beamline_geometries.size(); i++) {
@@ -899,23 +925,25 @@ public:
             }
             /// TODO: dealing with aperture
             beamline_objects[i]->n_scorers = 0;
-            this->world->children[i] = beamline_objects[i];
+            this->world->children[i]       = beamline_objects[i];
         }
 
         ///< create a child
         std::cout << "Creating child in world geometry.. : Phantom size -->" << std::endl;
-        if (this->twoCentimeterMode) std::cout << "(x, y, z) -> (400, 400, 2)" << std::endl;
-        else std::cout << "(x, y, z) -> (" << this->dcm_.dim_.x << ", " << this->dcm_.dim_.y << ", " << this->dcm_.dim_.z << ")" << std::endl;
+        if (this->twoCentimeterMode)
+            std::cout << "(x, y, z) -> (400, 400, 2)" << std::endl;
+        else
+            std::cout << "(x, y, z) -> (" << this->dcm_.dim_.x << ", " << this->dcm_.dim_.y << ", "
+                      << this->dcm_.dim_.z << ")" << std::endl;
         node_t<R>* frontPhantom = new node_t<R>;
-        node_t<R>* backPhantom = new node_t<R>;
-        node_t<R>* phantom = new node_t<R>;
-        
+        node_t<R>* backPhantom  = new node_t<R>;
+        node_t<R>* phantom      = new node_t<R>;
+
         // 1. If user uses CT geometry
-        if (!this->usingPhantomGeo)
-        {
+        if (!this->usingPhantomGeo) {
             this->world->children[beamline_geometries.size()] = phantom;
             //mqi::material_id* mids = new mqi::material_id[dcm_.dim_.x * dcm_.dim_.y * dcm_.dim_.z];
-            phantom->geo           = new grid3d<density_t, R>(this->dcm_.xe,
+            phantom->geo = new grid3d<density_t, R>(this->dcm_.xe,
                                                     this->dcm_.dim_.x + 1,
                                                     this->dcm_.ye,
                                                     this->dcm_.dim_.y + 1,
@@ -923,48 +951,44 @@ public:
                                                     this->dcm_.dim_.z + 1);
             density_t* rho_mass = new density_t[dcm_.dim_.x * dcm_.dim_.y * dcm_.dim_.z];
             std::cout << "Creating material information for grid.." << std::endl;
-            for (int i = 0; i < dcm_.dim_.x * dcm_.dim_.y * dcm_.dim_.z; i++) 
-            {
+            for (int i = 0; i < dcm_.dim_.x * dcm_.dim_.y * dcm_.dim_.z; i++) {
                 rho_mass[i] = this->tx->material_.hu_to_density(this->ct_data[i]);
             }
             phantom->geo->set_data(rho_mass);   //// Material conversion function required
-        }
-        else // 2. If user uses phantom geometry
+        } else                              // 2. If user uses phantom geometry
         {
             mqi::coordinate_transform<R> transformPhantom = this->tx->get_coordinate(bnb);
-            transformPhantom.translation.x = 0.f;
-            transformPhantom.translation.y = 0.f;
-            transformPhantom.translation.z = 0.f;
+            transformPhantom.translation.x                = 0.f;
+            transformPhantom.translation.y                = 0.f;
+            transformPhantom.translation.z                = 0.f;
 
             transformPhantom.angles[0] = 0.f;
             transformPhantom.angles[1] = 0.f;
             transformPhantom.angles[2] = 0.f;
             transformPhantom.angles[3] = 0.f;
 
-            if (this->twoCentimeterMode)
-            {
+            if (this->twoCentimeterMode) {
                 // Front phantom
                 this->world->children[beamline_geometries.size() + 1] = frontPhantom;
-                frontPhantom->geo           = new grid3d<density_t, R>(-200,
-                                                        200,
-                                                        401,
-                                                        -200,
-                                                        200,
-                                                        401,
-                                                        1,
-                                                        20,
-                                                        2,
-                                                        transformPhantom.rotation);
+                frontPhantom->geo = new grid3d<density_t, R>(-200,
+                                                             200,
+                                                             401,
+                                                             -200,
+                                                             200,
+                                                             401,
+                                                             1,
+                                                             20,
+                                                             2,
+                                                             transformPhantom.rotation);
 
                 density_t* rho_mass_parent1 = new density_t[400 * 400 * 1];
-                for (int i = 0; i < 400 * 400 * 1; i++) 
-                {
-                    rho_mass_parent1[i] = mqi::h2o_t<R>().rho_mass; // Water
+                for (int i = 0; i < 400 * 400 * 1; i++) {
+                    rho_mass_parent1[i] = mqi::h2o_t<R>().rho_mass;   // Water
                 }
                 frontPhantom->geo->set_data(rho_mass_parent1);
 
                 this->world->children[beamline_geometries.size() + 2] = phantom;
-                phantom->geo           = new grid3d<density_t, R>(-200,
+                phantom->geo = new grid3d<density_t, R>(-200,
                                                         200,
                                                         401,
                                                         -200,
@@ -976,47 +1000,43 @@ public:
                                                         transformPhantom.rotation);
 
                 density_t* rho_mass = new density_t[400 * 400 * 1];
-                for (int i = 0; i < 400 * 400 * 1; i++) 
-                {
-                    rho_mass[i] = mqi::h2o_t<R>().rho_mass; // Water
+                for (int i = 0; i < 400 * 400 * 1; i++) {
+                    rho_mass[i] = mqi::h2o_t<R>().rho_mass;   // Water
                 }
                 phantom->geo->set_data(rho_mass);
 
-                 // Back phantom
+                // Back phantom
                 this->world->children[beamline_geometries.size() + 3] = backPhantom;
-                backPhantom->geo           = new grid3d<density_t, R>(-200,
-                                                        200,
-                                                        401,
-                                                        -200,
-                                                        200,
-                                                        401,
-                                                        -380,
-                                                        -1,
-                                                        2,
-                                                        transformPhantom.rotation);
+                backPhantom->geo = new grid3d<density_t, R>(-200,
+                                                            200,
+                                                            401,
+                                                            -200,
+                                                            200,
+                                                            401,
+                                                            -380,
+                                                            -1,
+                                                            2,
+                                                            transformPhantom.rotation);
 
                 density_t* rho_mass_parent2 = new density_t[400 * 400 * 189];
-                for (int i = 0; i < 400 * 400 * 1; i++) 
-                {
-                    rho_mass_parent2[i] = mqi::h2o_t<R>().rho_mass; // Water
+                for (int i = 0; i < 400 * 400 * 1; i++) {
+                    rho_mass_parent2[i] = mqi::h2o_t<R>().rho_mass;   // Water
                 }
                 backPhantom->geo->set_data(rho_mass_parent2);
-            }
-            else
-            {
+            } else {
                 this->world->children[beamline_geometries.size() + 1] = phantom;
-                phantom->geo           = new grid3d<density_t, R>(this->dcm_.xe,
-                                                        this->dcm_.dim_.x + 1,
-                                                        this->dcm_.ye,
-                                                        this->dcm_.dim_.y + 1,
-                                                        this->dcm_.ze,
-                                                        this->dcm_.dim_.z + 1,
-                                                        transformPhantom.rotation);
+                phantom->geo =
+                  new grid3d<density_t, R>(this->dcm_.xe,
+                                           this->dcm_.dim_.x + 1,
+                                           this->dcm_.ye,
+                                           this->dcm_.dim_.y + 1,
+                                           this->dcm_.ze,
+                                           this->dcm_.dim_.z + 1,
+                                           transformPhantom.rotation);
 
                 density_t* rho_mass = new density_t[dcm_.dim_.x * dcm_.dim_.y * dcm_.dim_.z];
-                for (int i = 0; i < dcm_.dim_.x * dcm_.dim_.y * dcm_.dim_.z; i++) 
-                {
-                    rho_mass[i] = mqi::h2o_t<R>().rho_mass; // Water
+                for (int i = 0; i < dcm_.dim_.x * dcm_.dim_.y * dcm_.dim_.z; i++) {
+                    rho_mass[i] = mqi::h2o_t<R>().rho_mass;   // Water
                 }
                 phantom->geo->set_data(rho_mass);
             }
@@ -1082,6 +1102,63 @@ public:
         }
 
         mc::mc_score_variance = this->score_variance;
+
+#if defined(__CUDACC__)
+        /// Find the phantom node, which is the one with scorers, to get its data
+        mqi::node_t<R>* phantom_node = nullptr;
+        for (int i = 0; i < this->world->n_children; ++i) {
+            if (this->world->children[i]->n_scorers > 0) {
+                phantom_node = this->world->children[i];
+                break;
+            }
+        }
+
+        if (phantom_node) {
+            mqi::grid3d<density_t, R>* phantom_geo = phantom_node->geo;
+            density_t*                 h_rho_mass  = phantom_geo->get_data();
+            mqi::vec3<mqi::ijk_t>      dim         = phantom_geo->get_nxyz();
+
+            // Create channel format description
+            cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc<density_t>();
+
+            // Allocate CUDA array in device memory
+            cudaExtent extent = make_cudaExtent(dim.x, dim.y, dim.z);
+            cudaMalloc3DArray(&this->phantom_data_array, &channelDesc, extent, cudaArrayDefault);
+
+            // Copy data from host to device
+            cudaMemcpy3DParms copyParams = { 0 };
+            copyParams.srcPtr =
+              make_cudaPitchedPtr(h_rho_mass, dim.x * sizeof(density_t), dim.x, dim.y);
+            copyParams.dstArray = this->phantom_data_array;
+            copyParams.extent   = extent;
+            copyParams.kind     = cudaMemcpyHostToDevice;
+            cudaMemcpy3D(&copyParams);
+
+            // Specify texture
+            struct cudaResourceDesc resDesc;
+            memset(&resDesc, 0, sizeof(resDesc));
+            resDesc.resType         = cudaResourceTypeArray;
+            resDesc.res.array.array = this->phantom_data_array;
+
+            // Specify texture object parameters
+            struct cudaTextureDesc texDesc;
+            memset(&texDesc, 0, sizeof(texDesc));
+            texDesc.addressMode[0]   = cudaAddressModeClamp;
+            texDesc.addressMode[1]   = cudaAddressModeClamp;
+            texDesc.addressMode[2]   = cudaAddressModeClamp;
+            texDesc.filterMode       = cudaFilterModeLinear;
+            texDesc.readMode         = cudaReadModeElementType;
+            texDesc.normalizedCoords = 0;
+
+            // Create texture object
+            cudaCreateTextureObject(&this->host_texture_object, &resDesc, &texDesc, NULL);
+
+            // Copy texture object to device symbol
+            cudaMemcpyToSymbol(phantom_texture_object,
+                               &this->host_texture_object,
+                               sizeof(cudaTextureObject_t));
+        }
+#endif
     }
 
     /// \brief Sets up the particle beam source based on the treatment plan and log files.

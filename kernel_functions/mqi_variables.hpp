@@ -2,6 +2,10 @@
 #define MQI_VARIABLES_HPP
 #include <moqui/kernel_functions/mqi_kernel_functions.hpp>
 
+#if defined(__CUDACC__)
+extern __device__ cudaTextureObject_t phantom_texture_object;
+#endif
+
 /*!
  * @file mqi_variables.hpp
  * @brief Defines global variables for the Monte Carlo simulation.
