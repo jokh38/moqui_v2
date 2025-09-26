@@ -1,0 +1,170 @@
+
+## Development Plan: Performance Optimization via Texture Memory
+
+### 1\. Overview
+
+**Objective**: To refactor the particle transport simulation to use **CUDA texture memory** for accessing 3D phantom/CT density data.
+
+**Goal**: This change aims to significantly improve the performance of the simulation kernel by leveraging the hardware-accelerated caching and filtering capabilities of the GPU's texture units. This will reduce memory latency and improve throughput for the spatially coherent memory access patterns observed in the `transport_particles_patient` kernel.
+
+**Core Principles**:
+
+  * **Test-Driven Development (TDD)**: The development will follow a TDD methodology to ensure correctness and maintainability.
+  * **Non-Regression**: The changes must be implemented as a pure performance optimization. **No existing computational logic or physics simulation results should be altered.** The modification must be surgically applied to the memory access mechanism without side effects.
+  * **Environment-Agnostic Compilation**: The code must remain compilable in an environment **without the CUDA SDK**. All CUDA-specific code will be isolated and conditionally compiled.
+
+-----
+
+### 2\. Development Environment & Verification Strategy
+
+Since the development environment lacks a CUDA runtime, this plan relies on **static analysis** for code verification and a **decoupled design** for compilation.
+
+  * **Code Decoupling (Primary Strategy)**: We will use preprocessor macros (e.g., `__CUDACC__`, which is defined by NVCC) to isolate all CUDA-dependent code. This allows the C++ compiler (like g++) to ignore CUDA syntax and API calls, enabling successful compilation of the core logic. For CUDA APIs called from host code (`.cpp`), we will create mock/stub functions that are active when a `USE_CUDA` flag is off.
+
+    **Example: Mocking CUDA API Calls**
+
+    ```cpp
+    // in a new header, e.g., cuda_stubs.hpp
+    #ifndef USE_CUDA
+    // Mock CUDA API calls to allow compilation without the SDK
+    inline void cudaMalloc3DArray(...) { /* No-op */ }
+    inline void cudaMemcpy3D(...) { /* No-op */ }
+    // ... other necessary stubs
+    #endif
+    ```
+
+  * **Static Analysis (Verification)**: We will use LLVM/Clang-based tools to analyze the code for potential issues before it is ever run on a GPU.
+
+      * **Clang-Tidy**: This tool will be our primary linter. It can parse CUDA syntax (`__global__`, `__device__`, `<<<...>>>`) and will help identify common C++ pitfalls, style violations, and potential bugs in both standard C++ and CUDA-specific code paths.
+      * **Cppcheck**: As a secondary measure, Cppcheck can be used to detect other classes of C++ errors, although it does not understand CUDA-specific syntax.
+
+-----
+
+### 3\. Test-Driven Development (TDD) Plan
+
+The TDD cycle will focus on creating an abstraction for data fetching within the kernel, allowing us to test the logic without depending on the specific memory type.
+
+1.  **[RED] Create a Failing Test**:
+
+      * Define a host-level test function that prepares a sample 3D data grid.
+      * The test will call a new, abstract `fetch_density` function (which doesn't exist yet) for both a "CPU" implementation and a placeholder "GPU" implementation.
+      * The test will assert that for the same 3D coordinate, both implementations return the identical value.
+      * Initially, this test will fail to compile because the `fetch_density` function and its GPU implementation do not exist.
+
+2.  **[GREEN] Make the Test Pass**:
+
+      * Implement the abstraction. Create a `fetch_density` function.
+      * For the CPU path, this function will simply perform the existing global memory array lookup (`data[index]`).
+      * For the GPU path (within `#if defined(__CUDACC__)`), implement the new texture fetch logic (`tex3D`).
+      * Implement the necessary host-side code to set up the texture object.
+      * At this stage, the conceptual test passes: we now have two parallel implementations (one for CPU, one for GPU) that are expected to be functionally identical. Static analysis on the GPU path will serve as our "green" signal.
+
+3.  **[REFACTOR] Refine the Code**:
+
+      * Review the new code for clarity, efficiency, and adherence to style guidelines.
+      * Ensure that all CUDA-specific code is properly isolated within preprocessor blocks.
+      * Confirm that the `CMakeLists.txt` correctly handles both GPU and non-GPU build configurations.
+
+-----
+
+### 4\. Detailed Implementation Steps
+
+#### Step 1: Isolate CUDA-Specific Code
+
+Before introducing new features, ensure existing CUDA code is properly isolated.
+
+  * **Action**: In all relevant headers (`mqi_transport.hpp`, `mqi_variables.hpp`), wrap any CUDA-specific syntax (`__global__`, `__device__`, `atomicAdd`, etc.) in `#if defined(__CUDACC__)` blocks. This is the most crucial step for maintaining compilability on a non-CUDA system.
+
+#### Step 2: Declare the Global Texture Object
+
+The texture object must be accessible from the CUDA kernel.
+
+  * **File to Modify**: `kernel_functions/mqi_variables.hpp`
+
+  * **Action**: Declare an `extern __device__` texture object. This makes the variable visible across compilation units.
+
+    ```cpp
+    // In mqi_variables.hpp
+    #if defined(__CUDACC__)
+    extern __device__ cudaTextureObject_t phantom_texture_object;
+    #endif
+    ```
+
+  * **File to Modify**: `tps_env.cpp`
+
+  * **Action**: Define the global instance of the texture object. This file is compiled by NVCC and will create the actual variable.
+
+    ```cpp
+    // At the top of tps_env.cpp
+    #if defined(__CUDACC__)
+    __device__ cudaTextureObject_t phantom_texture_object = 0;
+    #endif
+    ```
+
+#### Step 3: Implement Host-Side Texture Management
+
+This involves creating, binding, and destroying the texture object on the host.
+
+  * **File to Modify**: `tps_env.cpp` (within the `main` function or `phantom_env::run()`)
+  * **Logic**:
+    1.  **Before the kernel launch**, add the following logic, wrapped in `#if defined(__CUDACC__)`:
+          * Create a `cudaChannelFormatDesc` to describe the data format (e.g., 32-bit float).
+          * Allocate a 3D `cudaArray` using `cudaMalloc3DArray()`.
+          * Copy the phantom density data (`rho_mass`) from the host to the `cudaArray` using `cudaMemcpy3D()`.
+          * Define the texture behavior with `cudaResourceDesc` and `cudaTextureDesc`. Key properties:
+              * `addressMode`: `cudaAddressModeClamp` (to handle out-of-bounds coordinates).
+              * `filterMode`: `cudaFilterModeLinear` (for hardware-accelerated interpolation).
+              * `readMode`: `cudaReadModeElementType`.
+              * `normalizedCoords`: `0` (to use non-normalized voxel coordinates).
+          * Create the texture object with `cudaCreateTextureObject()`.
+          * Copy the resulting texture object handle to the `__device__` variable using `cudaMemcpyToSymbol()`.
+    2.  **After the simulation completes**, add cleanup logic, also wrapped in `#if defined(__CUDACC__)`:
+          * Destroy the texture object with `cudaDestroyTextureObject()`.
+          * Free the `cudaArray` using `cudaFreeArray()`.
+
+#### Step 4: Refactor Kernel to Use Texture Fetches
+
+This is the core performance change.
+
+  * **File to Modify**: `kernel_functions/mqi_transport.hpp`
+  * **Action**: Inside the `transport_particles_patient` kernel:
+    1.  Locate the line responsible for reading the mass density:
+
+        ```cpp
+        rho_mass = c_geo[cnb];
+        ```
+
+    2.  Replace it with a 3D texture fetch. The coordinates passed to `tex3D` should be the voxel indices. A `+ 0.5f` offset is typically added to sample from the center of the voxel, which is important when using linear filtering.
+
+        ```cpp
+        // Inside the kernel, after track.its.cell is determined
+        // Old code:
+        // cnb = c_geo.ijk2cnb(track.its.cell);
+        // rho_mass  = c_geo[cnb];
+
+        // New code:
+        rho_mass = tex3D<float>(phantom_texture_object, 
+                                track.its.cell.x + 0.5f, 
+                                track.its.cell.y + 0.5f, 
+                                track.its.cell.z + 0.5f);
+        ```
+    *This change must be within the `#if defined(__CUDACC__)` block that should already be guarding the kernel definition.*
+
+-----
+
+### 5\. Impact Analysis & Verification
+
+  * **Impact on Existing Code**: The proposed changes are highly localized. The only functional change is the method of fetching the `rho_mass` value inside the main transport kernel. No other physics calculations, particle tracking logic, or data structures are modified. The risk of regression is therefore low, provided the coordinate systems are handled correctly.
+  * **Verification without CUDA**:
+    1.  **Compile CPU Version**: After implementing the changes with the correct preprocessor guards, compile the project with the `GPU` option turned OFF in `CMakeLists.txt`. The project must compile successfully. This verifies that the CUDA code is correctly isolated.
+    2.  **Static Analysis**: Run `clang-tidy` on `tps_env.cpp` and all included headers. This will check for C++ correctness and potential issues in the CUDA code path without executing it. Any warnings or errors should be addressed.
+    3.  **Code Review**: A manual code review should be performed to confirm that the logic for calculating texture coordinates (`track.its.cell`) correctly corresponds to the original logic for calculating the global memory index (`cnb`). This is the most critical point for ensuring correctness.
+
+### 6\. CMakeLists.txt Review
+
+The provided `CMakeLists.txt` is well-suited for this plan.
+
+  * `project(env LANGUAGES CXX CUDA)` correctly initializes support for both C++ and CUDA.
+  * `set_source_files_properties(tps_env.cpp PROPERTIES LANGUAGE CUDA)` ensures that the file containing our host-side CUDA API calls is compiled with `nvcc`.
+
+**No modifications to `CMakeLists.txt` are required.** The existing structure fully supports the conditional compilation strategy outlined in this plan.
