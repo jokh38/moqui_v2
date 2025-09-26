@@ -25,6 +25,7 @@
 #include <moqui/base/mqi_threads.hpp>
 #include <moqui/base/mqi_track.hpp>
 #include <moqui/kernel_functions/mqi_kernel_functions.hpp>
+#include <moqui/base/mqi_cuda_stubs.hpp>
 
 namespace mqi
 {

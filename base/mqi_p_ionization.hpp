@@ -413,6 +413,28 @@ public:
     }
 
     /**
+     * @brief Calculates the variance of the energy loss distribution (energy straggling).
+     * @param[in] rel Relativistic quantities of the proton.
+     * @param[in] mat The material properties.
+     * @param[in] step_length The step length in water-equivalent distance (mm).
+     * @return The variance of the energy loss (in MeV^2).
+     * @details This function implements a formulation of the Bohr formula for energy straggling.
+     */
+    CUDA_HOST_DEVICE
+    inline R
+    energy_straggling(const relativistic_quantities<R>& rel,
+                      const material_t<R>&              mat,
+                      const R                           step_length) {
+        // Using Bohr's formula for energy straggling variance:
+        // sigma^2 = (2 * pi * r_e^2 * m_e*c^2) * rho_elec * step * (m_e*c^2 / beta^2)
+        if (rel.beta_sq == 0.0) {
+            return 0.0;
+        }
+        return this->units.two_pi_re2_mc2 * mat.rho_elec * step_length * this->units.Me /
+               rel.beta_sq;
+    }
+
+    /**
      * @brief Simulates continuous effects along a step (energy loss and scattering).
      * @param[in,out] trk The particle track to be updated.
      * @param[in,out] stk The secondary particle stack.
@@ -443,7 +465,7 @@ public:
 
         // 3. Calculate Multiple Coulomb Scattering (MCS) angle
         R P                    = rel.momentum();
-        R radiation_length_mat = this->radiation_length(mat.rho_mass);
+        R radiation_length_mat = mat.radiation_length();
 
         // Highland's formula for the variance of the projected scattering angle distribution
         R th_sq = ((this->Es / P) * (this->Es / P) / rel.beta_sq) * len / radiation_length_mat;
