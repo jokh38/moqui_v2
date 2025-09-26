@@ -11,6 +11,11 @@
 #include <moqui/base/environments/mqi_tps_env.hpp>
 #include <moqui/base/mqi_cli.hpp>
 
+#if defined(__CUDACC__)
+#include <cuda_runtime.h>
+__device__ cudaTextureObject_t phantom_texture_object = 0;
+#endif
+
 #include "gdcmAttribute.h"
 #include "gdcmDataElement.h"
 #include "gdcmDataSet.h"

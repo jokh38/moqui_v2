@@ -207,9 +207,16 @@ transport_particles_patient(mqi::thrd_t*      threads,
                     track.its.cell = index_checker;
                 }
                 while (c_geo.is_valid(track.its.cell) && !track.is_stopped()) {
-                    cnb       = c_geo.ijk2cnb(track.its.cell);
+#if defined(__CUDACC__)
+                    rho_mass = tex3D<float>(phantom_texture_object,
+                                            track.its.cell.x + 0.5f,
+                                            track.its.cell.y + 0.5f,
+                                            track.its.cell.z + 0.5f);
+#else
+                    cnb      = c_geo.ijk2cnb(track.its.cell);
+                    rho_mass = c_geo[cnb];
+#endif
                     track.its = c_geo.intersect(track.vtx0.pos, track.vtx0.dir, track.its.cell);
-                    rho_mass  = c_geo[cnb];
 
                     water.rho_mass = rho_mass;
 #ifdef __PHYSICS_DEBUG__
@@ -376,9 +383,16 @@ transport_particles_patient_seed(mqi::thrd_t*      threads,
                 }
 
                 while (c_geo.is_valid(track.its.cell) && !track.is_stopped()) {
-                    cnb       = c_geo.ijk2cnb(track.its.cell);
-                    track.its = c_geo.intersect(track.vtx0.pos, track.vtx0.dir, track.its.cell);
-                    rho_mass  = c_geo[cnb];
+#if defined(__CUDACC__)
+                    rho_mass = tex3D<float>(phantom_texture_object,
+                                            track.its.cell.x + 0.5f,
+                                            track.its.cell.y + 0.5f,
+                                            track.its.cell.z + 0.5f);
+#else
+                    cnb      = c_geo.ijk2cnb(track.its.cell);
+                    rho_mass = c_geo[cnb];
+#endif
+                    track.its      = c_geo.intersect(track.vtx0.pos, track.vtx0.dir, track.its.cell);
                     water.rho_mass = rho_mass;
 #ifdef __PHYSICS_DEBUG__
                     if (!track.primary && track.dE > 0) {
