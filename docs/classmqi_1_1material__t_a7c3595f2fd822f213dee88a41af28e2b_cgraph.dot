@@ -1,0 +1,11 @@
+digraph "mqi::material_t::stopping_power_ratio"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::material_t::stopping\l_power_ratio",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="variable density"];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::getStoppingPowerRatio",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacemqi.html#ae0599f6d5de14e5d5336ad6cbe08f096",tooltip="Calculates the stopping power ratio using bilinear interpolation from the pre-calculated tables."];
+}

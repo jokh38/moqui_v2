@@ -1,0 +1,15 @@
+digraph "mqi::dose_to_medium"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::dose_to_medium",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Calculates the dose-to-medium for a given particle track."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::grid3d::get_data",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#aba5c88c21de4944b3d8ca112225adf98",tooltip="Gets a pointer to the grid's internal data array."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::grid3d::get_volume",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#a45a0d9383b3503ab8cfc06ffd948a6cc",tooltip="Calculates the volume of a voxel at a given 1D flattened index."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mqi::grid3d::cnb2ijk",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#af31edb87b7afcbc580d4cc66e1a951f4",tooltip="Converts a 1D flattened index back to a 3D index (i,j,k)."];
+}

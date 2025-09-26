@@ -1,0 +1,13 @@
+digraph "mqi::mat3x3::rotate"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::mat3x3::rotate",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Applies a rotation to the current matrix using Euler angles."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::grid3d::grid3d",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#a8c1987aeaaa90731b2515aceffa8c046",tooltip="Constructs an oriented non-uniform grid from edge arrays and rotation angles."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::grid3d::grid3d",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#a0ddf2be54f186f6c6f9a3102c2c17555",tooltip="Constructs an oriented uniform grid with rotation specified by angles."];
+}

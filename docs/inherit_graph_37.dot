@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="mqi::rect3d\< T, R \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1rect3d.html",tooltip="A template class for a 3D rectilinear grid, supporting non-uniform spacing."];
+}

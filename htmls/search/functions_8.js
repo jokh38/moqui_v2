@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['idx_0',['idx',['../classmqi_1_1roi__t.html#affd7f29cf86969787c38a73c1f48c557',1,'mqi::roi_t']]],
+  ['idx_5fcontour_1',['idx_contour',['../classmqi_1_1roi__t.html#a1ec54fc184d0bffe3cb232f6c25e7598',1,'mqi::roi_t']]],
+  ['idx_5findirect_2',['idx_indirect',['../classmqi_1_1roi__t.html#a032dd49ae2788d2abcbd6d8969db742f',1,'mqi::roi_t']]],
+  ['ijk2cnb_3',['ijk2cnb',['../classmqi_1_1mask__reader.html#a7f9db1c0f6b5813166a7545b8005691c',1,'mqi::mask_reader::ijk2cnb()'],['../classmqi_1_1grid3d.html#a124ac978806168aacfa923fdd3c30815',1,'mqi::grid3d::ijk2cnb(ijk_t i, ijk_t j, ijk_t k)'],['../classmqi_1_1grid3d.html#abbaa8542c27800b1f97793230a8aa617',1,'mqi::grid3d::ijk2cnb(vec3&lt; ijk_t &gt; idx)']]],
+  ['ijk2data_4',['ijk2data',['../classmqi_1_1rect3d.html#ade833480aaed54a34bf6ad2546b25caf',1,'mqi::rect3d']]],
+  ['index_5',['index',['../classmqi_1_1grid3d.html#a96b33890b3faf15de1aa20be853ee6c7',1,'mqi::grid3d::index(const mqi::vec3&lt; R &gt; &amp;p)'],['../classmqi_1_1grid3d.html#a3a5e70ddaa470606a6f28bbb00f7ab81',1,'mqi::grid3d::index(mqi::vec3&lt; R &gt; &amp;vtx1, mqi::vec3&lt; R &gt; &amp;dir1, mqi::vec3&lt; ijk_t &gt; &amp;idx)']]],
+  ['init_5ftable_6',['init_table',['../namespacemqi.html#ad67a4dae353ced6d153cca791bef2553',1,'mqi']]],
+  ['init_5ftable_5fcuda_7',['init_table_cuda',['../namespacemqi.html#a278ca7d510900b5f831d43ec0157d340',1,'mqi']]],
+  ['initialize_8',['initialize',['../classmqi_1_1x__environment.html#adb56b2f835fedd10befb49bd5f44883b',1,'mqi::x_environment']]],
+  ['initialize_5fand_5frun_9',['initialize_and_run',['../classmqi_1_1tps__env.html#ab99846553d1f27bb6b0f7b8ad10aaaaf',1,'mqi::tps_env']]],
+  ['initialize_5fthreads_10',['initialize_threads',['../namespacemqi.html#aaa7cca28b017d7716999a779df765956',1,'mqi']]],
+  ['insert_5fhashtable_11',['insert_hashtable',['../namespacemc.html#a4d16a19d1406115aa75fbd7e06670f84',1,'mc']]],
+  ['insert_5fpair_12',['insert_pair',['../classmqi_1_1scorer.html#abcc753e16766271c8baeda191180fe7a',1,'mqi::scorer']]],
+  ['interaction_13',['interaction',['../classmqi_1_1interaction.html#ae66185d63971e11abd3ffd5d91d353cc',1,'mqi::interaction']]],
+  ['interp_5flinear_14',['interp_linear',['../namespacemqi.html#a1cc1740916787e4ad58f7360af165aa2',1,'mqi::interp_linear(const std::map&lt; T, std::array&lt; T, S &gt; &gt; &amp;db, const T x, const size_t y_col=0)'],['../namespacemqi.html#a0d2c64fbf21dc86458fa2baaffdf6116',1,'mqi::interp_linear(const std::vector&lt; std::array&lt; T, S &gt; &gt; &amp;db, const T x, const size_t x_col=0, const size_t y_col=1)']]],
+  ['interpolate_15',['interpolate',['../namespacemqi.html#a640b3500b045d6ac3f10e7e0b04291e6',1,'mqi']]],
+  ['intersect_16',['intersect',['../classmqi_1_1aperture3d.html#a03022a13cc46980e3e756a4f96435878',1,'mqi::aperture3d::intersect()'],['../classmqi_1_1grid3d.html#ac3eacc47abd7206b761b2d13db7cf7b1',1,'mqi::grid3d::intersect(mqi::vec3&lt; R &gt; &amp;p, mqi::vec3&lt; R &gt; &amp;d, mqi::vec3&lt; ijk_t &gt; &amp;idx)'],['../classmqi_1_1grid3d.html#ab8d115ab942c8548a07b5a80b2b3cef2',1,'mqi::grid3d::intersect(mqi::vec3&lt; R &gt; &amp;p, mqi::vec3&lt; R &gt; &amp;d)']]],
+  ['intpl1d_17',['intpl1d',['../namespacemqi.html#a3056e4aa71c04575840237dbfe35b397',1,'mqi']]],
+  ['inverse_18',['inverse',['../classmqi_1_1mat3x3.html#a00b01be6cb7e91109d3c8aed8c217293',1,'mqi::mat3x3']]],
+  ['is_5fempty_19',['is_empty',['../classmqi_1_1track__stack__t.html#a990f65c65ed428f8f8e3bd676360e7de',1,'mqi::track_stack_t']]],
+  ['is_5fin_5fpoint_20',['is_in_point',['../classmqi_1_1rect3d.html#a9b228d7daa915a681a5b2c9a2eb94dfa',1,'mqi::rect3d']]],
+  ['is_5fin_5frect_21',['is_in_rect',['../classmqi_1_1rect3d.html#aefab742e6ea12afc4777d9bf3ace8684',1,'mqi::rect3d']]],
+  ['is_5finside_22',['is_inside',['../classmqi_1_1aperture3d.html#a5121aed9cacae9d79b464f26c5cc7ca5',1,'mqi::aperture3d']]],
+  ['is_5fstopped_23',['is_stopped',['../classmqi_1_1track__t.html#a8b3e9c2d3820bb4e6b2221ed46098a85',1,'mqi::track_t']]],
+  ['is_5fvalid_24',['is_valid',['../classmqi_1_1grid3d.html#a7e917968d3996f7eb1e75397e9dbd81b',1,'mqi::grid3d']]]
+];

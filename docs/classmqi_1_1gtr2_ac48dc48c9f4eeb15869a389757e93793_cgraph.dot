@@ -1,0 +1,11 @@
+digraph "mqi::gtr2::characterize_aperture"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::gtr2::characterize\l_aperture",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Characterizes the aperture based on DICOM data."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::treatment_machine\l_ion::characterize_aperture\l_opening",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1treatment__machine__ion.html#a82dd2a41c82fb8d4f84c23a1643a2cff",tooltip="Characterizes the aperture opening from a dataset."];
+}

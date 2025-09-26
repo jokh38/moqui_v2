@@ -1,0 +1,15 @@
+digraph "mqi::treatment_machine_ion::characterize_aperture_opening"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::treatment_machine\l_ion::characterize_aperture\l_opening",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Characterizes the aperture opening from a dataset."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::gtr1::characterize\l_aperture",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1gtr1.html#aaf4bdc4b1b2716e032eed1ff04135179",tooltip="Characterizes the aperture based on DICOM data."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::gtr2::characterize\l_aperture",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1gtr2.html#ac48dc48c9f4eeb15869a389757e93793",tooltip="Characterizes the aperture based on DICOM data."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mqi::pbs::characterize\l_aperture",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1pbs.html#abbcdf2001f29d2cc405ad126e6f9b402",tooltip="Characterizes an aperture based on DICOM data and machine geometry."];
+}

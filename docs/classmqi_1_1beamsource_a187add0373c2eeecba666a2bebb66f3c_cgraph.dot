@@ -1,0 +1,12 @@
+digraph "mqi::beamsource::append_beamlet"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::beamsource::append\l_beamlet",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Appends a beamlet to the source with a specified coordinate transformation."];
+  Node1 -> Node1 [id="edge1_Node000001_Node000001",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node2 [id="edge2_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::beamlet::set_coordinate\l_transform",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1beamlet.html#aa74720723f8d0f45e5c8b2422c33a894",tooltip="Sets the coordinate transformation for the beamlet."];
+}

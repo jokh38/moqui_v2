@@ -1,0 +1,17 @@
+digraph "mqi::beamsource::total_delivery_time"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::beamsource::total\l_delivery_time",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Calculates the total delivery time."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::beamsource::append\l_beamlet",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1beamsource.html#a13471b5c0eb3fff03bd5b60ee2892361",tooltip="Appends a beamlet to the source's internal containers."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::beamsource::append\l_beamlet_log",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1beamsource.html#a0451306c28b7751f418880d7a82d7ed5",tooltip="Appends a beamlet based on log file data."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mqi::gtr1::create_beamsource",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1gtr1.html#a14f3c4f852c2347f6d7b15e9e566f7c0",tooltip="Creates a beam source model from log file data."];
+  Node3 -> Node5 [id="edge4_Node000003_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="mqi::gtr2::create_beamsource",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1gtr2.html#a8b9fbf8b2d88b554b1d059a5e988fd4d",tooltip="Creates a beam source model from log file data."];
+}

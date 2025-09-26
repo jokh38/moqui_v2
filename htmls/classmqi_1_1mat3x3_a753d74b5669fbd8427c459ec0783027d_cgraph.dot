@@ -1,0 +1,27 @@
+digraph "mqi::mat3x3::mat3x3"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::mat3x3::mat3x3",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Constructs a rotation matrix that aligns one vector to another."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::vec3::cross",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1vec3.html#a74abdf8a99507aaf7644e57a5039731f",tooltip="Calculates the cross product with another vector."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::vec3::vec3",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1vec3.html#a9f81491ccdf66313ea54a4f456286205",tooltip="Default constructor, initializes to (0, 0, 0)."];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mqi::vec3::vec3",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1vec3.html#af1f29088f407303737f8cc287026aa51",tooltip="Copy constructor (from non-const reference)."];
+  Node4 -> Node4 [id="edge4_Node000004_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node5 [id="edge5_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="mqi::vec3::dot",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1vec3.html#aa7cf0d7d957ca569a41bae52608c635f",tooltip="Calculates the dot product with another vector."];
+  Node5 -> Node4 [id="edge6_Node000005_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge7_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="mqi::vec3::dump",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1vec3.html#a6f82cc668e61e6a8fc148cd8405e4a56",tooltip="Dumps the vector's components to the console."];
+  Node1 -> Node7 [id="edge8_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="mqi::mqi_abs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacemqi.html#a984f54d8754349ffce13a4d150076a8b",tooltip="Calculates the absolute value. Wrapper for abs or fabs."];
+  Node1 -> Node8 [id="edge9_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="mqi::vec3::norm",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1vec3.html#a88e9972678dec2310a6ca61b5a8c213c",tooltip="Calculates the Euclidean norm (magnitude) of the vector."];
+  Node1 -> Node9 [id="edge10_Node000001_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="mqi::vec3::normalize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1vec3.html#ac0bb2cebe4fbfbed9155262841c426f9",tooltip="Normalizes the vector to unit length."];
+}

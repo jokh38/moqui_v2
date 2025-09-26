@@ -1,0 +1,11 @@
+digraph "mqi::aperture3d::is_inside"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::aperture3d::is\l_inside",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Checks if a 3D point is inside any of the aperture openings."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::aperture3d::sol1_1",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1aperture3d.html#acb5df7525c418c9c9426ae7546167195",tooltip="Determines if a point is inside a polygon using the ray casting algorithm."];
+}

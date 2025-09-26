@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['radiation_5flength_5fwater_0',['radiation_length_water',['../structmqi_1_1physics__constants.html#ab9f3b8f3355ed53567db8ef58dd6aec7',1,'mqi::physics_constants']]],
+  ['random_5fseed_1',['random_seed',['../classmqi_1_1phantom__env.html#afdb4c876eea55f4aa26a34ba613b0b90',1,'mqi::phantom_env']]],
+  ['range_5fsteps_2',['range_steps',['../namespacemqi.html#a18c44f0420d9e027575c05ed634018ad',1,'mqi']]],
+  ['rangeshifter_3',['rangeshifter',['../structmqi_1_1pbs_1_1geometry__specification.html#a03848ca8488b6cdb6cfca6d261a8feea',1,'mqi::pbs::geometry_specification']]],
+  ['rangeshifter_5f_4',['rangeshifter_',['../classmqi_1_1pbs.html#a20a249438bcfe9a3099fa285616cb13b',1,'mqi::pbs']]],
+  ['rangeshifter_5fsnout_5fgap_5',['rangeshifter_snout_gap',['../structmqi_1_1pbs_1_1geometry__specification.html#a219f2a413cce6f709e71187abb0485ba',1,'mqi::pbs::geometry_specification']]],
+  ['ratio_6',['ratio',['../structmqi_1_1pbs_1_1spot__specification.html#a7cea4e2bc07310f429c5937bec3108a7',1,'mqi::pbs::spot_specification']]],
+  ['re_7',['re',['../structmqi_1_1physics__constants.html#a1d41b65cc7a41fbbb321ba80075445a3',1,'mqi::physics_constants']]],
+  ['re_5fsq_8',['re_sq',['../structmqi_1_1physics__constants.html#af0e37e031f04744459d0a5f644f210ec',1,'mqi::physics_constants']]],
+  ['read_5fstructure_9',['read_structure',['../classmqi_1_1tps__env.html#ad9157f222a44301276b50cfd1c8bd9e8',1,'mqi::tps_env']]],
+  ['ref_5fvector_10',['ref_vector',['../classmqi_1_1track__t.html#ad12e397c58b27fd10ad8f6eb3cb393ee',1,'mqi::track_t']]],
+  ['reshape_5foutput_11',['reshape_output',['../classmqi_1_1tps__env.html#a02bcefa25939a9d673e7e53c424e03af',1,'mqi::tps_env']]],
+  ['restricted_5fstopping_5fpower_5ftable_12',['restricted_stopping_power_table',['../namespacemqi.html#a79ad8da130bf2f5f97ae2c4325953ebe',1,'mqi']]],
+  ['rho_5felec_13',['rho_elec',['../classmqi_1_1material__t.html#a80389d4740aeb0f33e8cc69162e8822b',1,'mqi::material_t']]],
+  ['rho_5fmass_14',['rho_mass',['../classmqi_1_1material__t.html#aab85e9eede73428b945e31b13e2e571e',1,'mqi::material_t']]],
+  ['rnd_5fgenerator_15',['rnd_generator',['../structmqi_1_1thrd__t.html#a2e500901e84c6873f54d14c244499524',1,'mqi::thrd_t']]],
+  ['roi_5f_16',['roi_',['../classmqi_1_1scorer.html#af046eb64b0948aead3075eba6a4a4fa2',1,'mqi::scorer']]],
+  ['rot_17',['rot',['../classmqi_1_1geometry.html#a4ce78e74e9e79d5b30737f0a1ece0378',1,'mqi::geometry']]],
+  ['rotation_18',['rotation',['../classmqi_1_1coordinate__transform.html#acacb72b54e5522021cf2c8c84f39276b',1,'mqi::coordinate_transform']]],
+  ['rotation_5fmatrix_5ffwd_19',['rotation_matrix_fwd',['../classmqi_1_1grid3d.html#a0417a8cd4d2a30940f58e9392199ef4a',1,'mqi::grid3d']]],
+  ['rotation_5fmatrix_5finv_20',['rotation_matrix_inv',['../classmqi_1_1grid3d.html#a4ff9fc49dab05df66b4121f814e6d250',1,'mqi::grid3d']]]
+];

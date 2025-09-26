@@ -1,0 +1,15 @@
+digraph "mqi::mat3x3::mat3x3"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::mat3x3::mat3x3",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Default constructor. Initializes to an identity matrix."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::mat3x3::inverse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1mat3x3.html#a00b01be6cb7e91109d3c8aed8c217293",tooltip="Computes the inverse of the rotation matrix (which is its transpose)."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::mat3x3::mat3x3",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1mat3x3.html#a2ae88086950f06df3f3770aa05e6d827",tooltip="Copy constructor."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mqi::mat3x3::operator*",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1mat3x3.html#ab01b5a8cb4b4f27b57de318311588e27",tooltip="Multiplies this matrix by another 3x3 matrix."];
+}

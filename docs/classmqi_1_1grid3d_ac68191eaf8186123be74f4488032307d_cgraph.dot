@@ -1,0 +1,11 @@
+digraph "mqi::grid3d::grid3d"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::grid3d::grid3d",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Constructs a non-uniform grid from arrays of edge coordinates."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::grid3d::calculate\l_bounding_box",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#a630661758dcd1a107ff00f80b13cf105",tooltip="A helper function to calculate the bounding box corners and center of the grid."];
+}

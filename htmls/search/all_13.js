@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['v000_5f_0',['V000_',['../classmqi_1_1grid3d.html#a0f396af59054e9f45973d25ad3f528b4',1,'mqi::grid3d']]],
+  ['v111_5f_1',['V111_',['../classmqi_1_1grid3d.html#a48bb53307fae3b220d0dc358019cf341',1,'mqi::grid3d']]],
+  ['value_2',['value',['../structmqi_1_1key__value.html#af4dff6587741dd26667fe4d09bc6f0e2',1,'mqi::key_value']]],
+  ['variance_5f_3',['variance_',['../classmqi_1_1scorer.html#a080e6fdca9d8aa2d5c4009d19bfb4ea8',1,'mqi::scorer']]],
+  ['vec2_4',['vec2',['../classmqi_1_1vec2.html',1,'mqi::vec2&lt; T &gt;'],['../classmqi_1_1vec2.html#a9c98d025daf145347271cc9c047005b4',1,'mqi::vec2::vec2(vec2 &amp;ref)'],['../classmqi_1_1vec2.html#aab87b91bcacbc11a5c1c4c53cb647407',1,'mqi::vec2::vec2()'],['../classmqi_1_1vec2.html#a560ea910532db83c18b0a53cf81655ef',1,'mqi::vec2::vec2(T a, T b)'],['../classmqi_1_1vec2.html#a2fe1c95a67f3dbe4cf69d78c62f9689c',1,'mqi::vec2::vec2(const vec2 &amp;ref)'],['../classmqi_1_1vec2.html#a7701a70cd513a0dab707debd4d1e7df7',1,'mqi::vec2::vec2(const std::array&lt; T, 2 &gt; &amp;ref)']]],
+  ['vec2_3c_20r_20_3e_5',['vec2&lt; R &gt;',['../classmqi_1_1vec2.html',1,'mqi']]],
+  ['vec3_6',['vec3',['../classmqi_1_1vec3.html',1,'mqi::vec3&lt; T &gt;'],['../classmqi_1_1vec3.html#af1f29088f407303737f8cc287026aa51',1,'mqi::vec3::vec3(vec3 &amp;ref)'],['../classmqi_1_1vec3.html#a9f81491ccdf66313ea54a4f456286205',1,'mqi::vec3::vec3()'],['../classmqi_1_1vec3.html#a5cf0df8b004513f01d25288fe072b859',1,'mqi::vec3::vec3(T a, T b, T c)'],['../classmqi_1_1vec3.html#a40d52468aa7c290a2934d7d31cdb78ef',1,'mqi::vec3::vec3(const vec3 &amp;ref)'],['../classmqi_1_1vec3.html#ab0c556693061d8065800a2713cfdc4ff',1,'mqi::vec3::vec3(const std::array&lt; T, 3 &gt; &amp;ref)'],['../classmqi_1_1vec3.html#a0e91e690b29381926398917a5fbae354',1,'mqi::vec3::vec3(const T *ref)']]],
+  ['vec3_3c_20float_20_3e_7',['vec3&lt; float &gt;',['../classmqi_1_1vec3.html',1,'mqi']]],
+  ['vec3_3c_20ijk_5ft_20_3e_8',['vec3&lt; ijk_t &gt;',['../classmqi_1_1vec3.html',1,'mqi']]],
+  ['vec3_3c_20int_20_3e_9',['vec3&lt; int &gt;',['../classmqi_1_1vec3.html',1,'mqi']]],
+  ['vec3_3c_20r_20_3e_10',['vec3&lt; R &gt;',['../classmqi_1_1vec3.html',1,'mqi']]],
+  ['vec3_3c_20size_5ft_20_3e_11',['vec3&lt; size_t &gt;',['../classmqi_1_1vec3.html',1,'mqi']]],
+  ['vec3_3c_20uint16_5ft_20_3e_12',['vec3&lt; uint16_t &gt;',['../classmqi_1_1vec3.html',1,'mqi']]],
+  ['vec4_13',['vec4',['../classmqi_1_1vec4.html',1,'mqi::vec4&lt; T &gt;'],['../classmqi_1_1vec4.html#a5f62ac2c1453a164e6659b05790299d3',1,'mqi::vec4::vec4(vec4 &amp;ref)'],['../classmqi_1_1vec4.html#a39f65c64f309f83509ed2f86ed867678',1,'mqi::vec4::vec4()'],['../classmqi_1_1vec4.html#a5cdbebfa19a099dec929568368e2bc47',1,'mqi::vec4::vec4(T a, T b, T c, T d)'],['../classmqi_1_1vec4.html#acd9d64a779f18d5c4c50d4a61013cb5d',1,'mqi::vec4::vec4(const vec4 &amp;ref)'],['../classmqi_1_1vec4.html#a43b8fa2c170c6d1e4d447b2037be2c3b',1,'mqi::vec4::vec4(const T *ref)'],['../classmqi_1_1vec4.html#a354ac080af95dd5be2ccf3ae28704cc1',1,'mqi::vec4::vec4(const std::array&lt; T, 4 &gt; &amp;ref)']]],
+  ['verbosity_14',['verbosity',['../classmqi_1_1tps__env.html#a91d29a59471d9e11f86bdfb4bb2b6acc',1,'mqi::tps_env']]],
+  ['vertex_5ft_15',['vertex_t',['../structmqi_1_1vertex__t.html',1,'mqi']]],
+  ['vertex_5ft_3c_20r_20_3e_16',['vertex_t&lt; R &gt;',['../structmqi_1_1vertex__t.html',1,'mqi']]],
+  ['vertices_17',['vertices',['../classmqi_1_1x__environment.html#af97cd58f110c5f6cd4878a666b0a6247',1,'mqi::x_environment']]],
+  ['virtual_18',['VIRTUAL',['../namespacemqi.html#a81cfefddfaa187b035e94221ce0de65caeb893b12aefe75838bf0d00c13c1e671',1,'mqi']]],
+  ['volume_19',['VOLUME',['../namespacemqi.html#a909fbe89861e7a919e0fdc3bd394c2aca84ab04db0385155026db6b8c1d7eb7ac',1,'mqi']]],
+  ['volume_20',['volume',['../classmqi_1_1aperture.html#a206012d336b7562cce55c26c864f2b9b',1,'mqi::aperture::volume'],['../classmqi_1_1rangeshifter.html#ab382fad5cc4de2d0455ccb702c9a0b3f',1,'mqi::rangeshifter::volume']]],
+  ['vtx0_21',['vtx0',['../classmqi_1_1track__t.html#a98fcdc2393d97d6fa434875a48dec6ba',1,'mqi::track_t']]],
+  ['vtx1_22',['vtx1',['../classmqi_1_1track__t.html#a3f936f0ceda5222645db1cee1c2dc184',1,'mqi::track_t']]],
+  ['vx_23',['vx',['../structmqi_1_1pbs_1_1time__specification.html#af996795c35b26896348c19a90fddb667',1,'mqi::pbs::time_specification']]],
+  ['vy_24',['vy',['../structmqi_1_1pbs_1_1time__specification.html#aff7ac3995394cb464d6713fdb4106f4a',1,'mqi::pbs::time_specification']]]
+];

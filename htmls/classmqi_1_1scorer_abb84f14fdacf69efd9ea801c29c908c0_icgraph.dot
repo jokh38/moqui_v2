@@ -1,0 +1,13 @@
+digraph "mqi::scorer::delete_data_if_used"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::scorer::delete\l_data_if_used",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Frees the memory for all data, count, mean, and variance arrays if they have been allocated."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::scorer::scorer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1scorer.html#a17af3e2912e25d6836b663f7f30018bb",tooltip="Constructs a scorer object."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::scorer::~scorer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1scorer.html#a3773209e5984d2ef35117d9e3810f356",tooltip="Destructor. Frees memory allocated for the data arrays."];
+}

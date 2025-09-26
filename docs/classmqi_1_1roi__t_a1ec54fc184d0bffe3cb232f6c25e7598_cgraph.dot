@@ -1,0 +1,11 @@
+digraph "mqi::roi_t::idx_contour"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::roi_t::idx_contour",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Checks if a transport index is within any contour segment."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::roi_t::lower_bound_cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1roi__t.html#a2aeb34103c1b74ae019ea7215991c81b",tooltip="A custom binary search implementation to find the lower bound of a value in the start_ array."];
+}

@@ -1,0 +1,11 @@
+digraph "mqi::gtr1::characterize_history"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::gtr1::characterize\l_history",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Calculates the number of histories for a spot based on log file data."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::gtr1::create_beamsource",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1gtr1.html#a14f3c4f852c2347f6d7b15e9e566f7c0",tooltip="Creates a beam source model from log file data."];
+}

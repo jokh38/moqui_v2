@@ -1,0 +1,11 @@
+digraph "mqi::coordinate_transform::operator="
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::coordinate_transform\l::operator=",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Assignment operator. Copies the content of one transformation object into another."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::coordinate_transform\l::coordinate_transform",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1coordinate__transform.html#a4dd187f8edad9214880cd2d27c9a3e96",tooltip="Constructs a transformation from given angles and a position vector."];
+}

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['radiation_5flength_0',['radiation_length',['../classmqi_1_1material__t.html#a39e756c2e8a3a772d27909fb19c30c0f',1,'mqi::material_t::radiation_length()'],['../classmqi_1_1material__t.html#a39e756c2e8a3a772d27909fb19c30c0f',1,'mqi::material_t::radiation_length()']]],
+  ['rangeshifter_1',['rangeshifter',['../classmqi_1_1rangeshifter.html#a88127cb21dab70ae6820e47a9a098cca',1,'mqi::rangeshifter::rangeshifter(mqi::vec3&lt; float &gt; &amp;v, mqi::vec3&lt; float &gt; &amp;p, mqi::mat3x3&lt; float &gt; &amp;r, bool is_rect=true)'],['../classmqi_1_1rangeshifter.html#aa6727f49728f1b7470f97901899897e1',1,'mqi::rangeshifter::rangeshifter(const mqi::rangeshifter &amp;rhs)']]],
+  ['read_2',['read',['../classmqi_1_1cli.html#a9422c1ece287dd4b8b6540027c4b7d13',1,'mqi::cli']]],
+  ['read_5fdata_3',['read_data',['../classmqi_1_1rect3d.html#a26dcdf69588c687d8cde2f4aef70307a',1,'mqi::rect3d::read_data(T *src, size_t total)'],['../classmqi_1_1rect3d.html#a604685a452aca2ff9b70f7e3b01d5f54',1,'mqi::rect3d::read_data(std::valarray&lt; T &gt; src)']]],
+  ['read_5fdcm_5fdir_4',['read_dcm_dir',['../classmqi_1_1tps__env.html#ab80aef53cd3e31b2f19cd70b5041ae6b',1,'mqi::tps_env']]],
+  ['read_5finput_5fparameters_5',['read_input_parameters',['../classmqi_1_1file__parser.html#a96c6022cac436c5804d7ddd56d7b5ab1',1,'mqi::file_parser']]],
+  ['read_5flogfile_5fdir_6',['read_logfile_dir',['../classmqi_1_1tps__env.html#ab13398fd962e41399d5731b784c7afae',1,'mqi::tps_env']]],
+  ['read_5fmask_5ffiles_7',['read_mask_files',['../classmqi_1_1mask__reader.html#abdfe7df76b188952593162e1caea9933',1,'mqi::mask_reader']]],
+  ['read_5fmha_5ffile_8',['read_mha_file',['../classmqi_1_1mask__reader.html#a89acdf14810668dea07ad5cfa24ae5d2',1,'mqi::mask_reader']]],
+  ['read_5fvertices_5fspot_9',['read_vertices_spot',['../classmqi_1_1tps__env.html#a9b6fa071b498c70e13eb7b16e3294b20',1,'mqi::tps_env']]],
+  ['rect3d_10',['rect3d',['../classmqi_1_1rect3d.html#aa2bc44329b9527e60fe3f671120573ab',1,'mqi::rect3d::rect3d()'],['../classmqi_1_1rect3d.html#a71ce391b1042c87f1fb095401adb2b62',1,'mqi::rect3d::rect3d(std::vector&lt; R &gt; &amp;x, std::vector&lt; R &gt; &amp;y, std::vector&lt; R &gt; &amp;z)'],['../classmqi_1_1rect3d.html#a26722a657219a7dea43fa27c673635ae',1,'mqi::rect3d::rect3d(R x[], int xn, R y[], int yn, R z[], int zn)'],['../classmqi_1_1rect3d.html#a1f90d339fb6200509e09b5bee2aa0d4b',1,'mqi::rect3d::rect3d(rect3d &amp;c)']]],
+  ['relativistic_5fquantities_11',['relativistic_quantities',['../classmqi_1_1relativistic__quantities.html#a7594012b52e3f7c40f1cca2ca8030019',1,'mqi::relativistic_quantities']]],
+  ['reshape_5fdata_12',['reshape_data',['../classmqi_1_1tps__env.html#a8148f76d075e80579c3982f1e26edc65',1,'mqi::tps_env::reshape_data()'],['../classmqi_1_1x__environment.html#ae1e1cf03810f61628bf125db358e274f',1,'mqi::x_environment::reshape_data()']]],
+  ['roi_5ft_13',['roi_t',['../classmqi_1_1roi__t.html#a83fb1a8df1a5891804cc5e73d7d8c894',1,'mqi::roi_t']]],
+  ['rotate_14',['rotate',['../classmqi_1_1mat3x3.html#ad04216d92f8df0baf890c753b9cef7e9',1,'mqi::mat3x3']]],
+  ['rotate_5fx_15',['rotate_x',['../classmqi_1_1mat3x3.html#add3b736e870c72f50cb950efe2e48a3e',1,'mqi::mat3x3']]],
+  ['rotate_5fy_16',['rotate_y',['../classmqi_1_1mat3x3.html#ad9c53e797b3856ef62901403ec79a3b3',1,'mqi::mat3x3']]],
+  ['rotate_5fz_17',['rotate_z',['../classmqi_1_1mat3x3.html#aa34b76d97b10224b4725290736814a02',1,'mqi::mat3x3']]],
+  ['run_18',['run',['../classmqi_1_1phantom__env.html#a39f58f7b4adf1fec01dfce917c53b7de',1,'mqi::phantom_env::run()'],['../classmqi_1_1tps__env.html#a815e21607d6af016fa9eea6096ba066b',1,'mqi::tps_env::run()'],['../classmqi_1_1x__environment.html#ae27590ea95a2efebf186748d319c0d1f',1,'mqi::x_environment::run()']]],
+  ['run_5fby_5fbeam_19',['run_by_beam',['../classmqi_1_1tps__env.html#a5fc73242d27283f2b4e911aada6b3f21',1,'mqi::tps_env']]],
+  ['run_5fby_5fspot_20',['run_by_spot',['../classmqi_1_1tps__env.html#a57a32b1551abb79ca6a59e5864560d4f',1,'mqi::tps_env']]],
+  ['run_5fsimulation_21',['run_simulation',['../classmqi_1_1tps__env.html#adcf39a30ee258747d918e5ba5b3c8ddb',1,'mqi::tps_env']]]
+];

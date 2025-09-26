@@ -1,0 +1,37 @@
+digraph "mqi::tps_env::save_reshaped_files"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::tps_env::save\l_reshaped_files",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Saves the reshaped simulation results to files in various formats (mhd, mha, raw)."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::treatment_session\l::get_beam_names",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1treatment__session.html#ab34ece772cc061bfa0416479129787ab",tooltip="Retrieves a list of all beam names from the treatment plan."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::trim_copy",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacemqi.html#aa0eab400a55a6a7957d2b4eb8391916b",tooltip="Removes leading and trailing whitespace from a string."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mqi::trim_left_copy",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacemqi.html#ae5afdecf41c73ac5ca33fb96dfab63f6",tooltip="Removes leading whitespace from a string."];
+  Node3 -> Node5 [id="edge4_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="mqi::trim_right_copy",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacemqi.html#a44092bf42c4446f872fd67a0fd085e6d",tooltip="Removes trailing whitespace from a string."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="mqi::tps_env::reshape_data",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1tps__env.html#a8148f76d075e80579c3982f1e26edc65",tooltip="Reshapes the scored data from a sparse format to a dense 3D grid."];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="mqi::io::save_to_bin",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacemqi_1_1io.html#a3d7d08b8b674430cce1d0a3d63b426f1",tooltip="Saves sparse scorer data to separate binary files."];
+  Node1 -> Node8 [id="edge7_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="mqi::io::save_to_mha",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacemqi_1_1io.html#af9fe1e2896ecde77dbacfd8b4cac22d6",tooltip="Saves volumetric data to a single MetaImage file (.mha)."];
+  Node8 -> Node9 [id="edge8_Node000008_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="mqi::grid3d::get_nxyz",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#ad2ce2ce3583b02a860b0ba883418c924",tooltip="Gets the dimensions of the grid (number of voxels)."];
+  Node8 -> Node10 [id="edge9_Node000008_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="mqi::grid3d::get_x\l_edges",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#a39ca84cdae9fae75801fb416cd7d3288",tooltip="Gets the array of x-edge coordinates."];
+  Node8 -> Node11 [id="edge10_Node000008_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="mqi::grid3d::get_y\l_edges",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#a9dc2274b42225b30814f1bf104ffdd48",tooltip="Gets the array of y-edge coordinates."];
+  Node8 -> Node12 [id="edge11_Node000008_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="mqi::grid3d::get_z\l_edges",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#a31aef33bc66488c4bda974f5fab1f205",tooltip="Gets the array of z-edge coordinates."];
+  Node1 -> Node13 [id="edge12_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="mqi::io::save_to_mhd",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacemqi_1_1io.html#a87f96ca392c65b5d3336237e788a8f2f",tooltip="Saves volumetric data to a MetaImage header/raw file pair (.mhd/.raw)."];
+  Node13 -> Node9 [id="edge13_Node000013_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node10 [id="edge14_Node000013_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node11 [id="edge15_Node000013_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node12 [id="edge16_Node000013_Node000012",color="steelblue1",style="solid",tooltip=" "];
+}

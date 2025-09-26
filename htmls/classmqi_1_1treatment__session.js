@@ -1,0 +1,27 @@
+var classmqi_1_1treatment__session =
+[
+    [ "treatment_session", "classmqi_1_1treatment__session.html#ada9ab77d154e29f513dbba769ca83cbe", null ],
+    [ "~treatment_session", "classmqi_1_1treatment__session.html#aa386c5b5c2ce40ca98418b1e04ef79b5", null ],
+    [ "create_machine", "classmqi_1_1treatment__session.html#a981203b108f21b3bc27eb6d036c354d9", null ],
+    [ "get_beam_dataset", "classmqi_1_1treatment__session.html#a4156e30ce6d2a709265461676752e320", null ],
+    [ "get_beam_dataset", "classmqi_1_1treatment__session.html#a2a3b3abb857ef6671d488e5821ba8f91", null ],
+    [ "get_beam_name", "classmqi_1_1treatment__session.html#ad2dc422ddcde2d8264390d0571ba832b", null ],
+    [ "get_beam_names", "classmqi_1_1treatment__session.html#ab34ece772cc061bfa0416479129787ab", null ],
+    [ "get_beamline", "classmqi_1_1treatment__session.html#a901fd1a39674807e5a29421c94b64c3d", null ],
+    [ "get_beamsource", "classmqi_1_1treatment__session.html#a386491aa14eef01aefd4750518760190", null ],
+    [ "get_beamsource", "classmqi_1_1treatment__session.html#a2f5c76ffe183eb858a2fb34cb24959ed", null ],
+    [ "get_beamsource", "classmqi_1_1treatment__session.html#a6c810d02e0867886b8a1e46f7f8a33f4", null ],
+    [ "get_coordinate", "classmqi_1_1treatment__session.html#aa60104ac826f8d913b996bd9ec2690f8", null ],
+    [ "get_dataelement", "classmqi_1_1treatment__session.html#a42e177dc7a2d220709f2ea5377f93452", null ],
+    [ "get_fractions", "classmqi_1_1treatment__session.html#a0da723b59c7e235597e85c0c08ba17d0", null ],
+    [ "get_modality_type", "classmqi_1_1treatment__session.html#a1a12463d7ab5f732311085028e84e2c5", null ],
+    [ "get_num_beams", "classmqi_1_1treatment__session.html#abdc58fee029f401bc9f49d5bd50a7232", null ],
+    [ "get_timeline", "classmqi_1_1treatment__session.html#afba09f9861f7f11194b0b85a1e56a542", null ],
+    [ "summary", "classmqi_1_1treatment__session.html#a33b4d3934b34a132ff4498cac5e534c3", null ],
+    [ "machine_name_", "classmqi_1_1treatment__session.html#a92fb4fc1b9ba46173253f58b985d05e8", null ],
+    [ "material_", "classmqi_1_1treatment__session.html#a95331f0d4128d538c431bfddb9306ef0", null ],
+    [ "mqi_ds_", "classmqi_1_1treatment__session.html#ab68b72b4273149328abcf9bd9e53f711", null ],
+    [ "mtype_", "classmqi_1_1treatment__session.html#ac9c4d78143de71055f801df4e191d75e", null ],
+    [ "seq_tags_", "classmqi_1_1treatment__session.html#a6ff69fd7fcff56db7289ef73d6969147", null ],
+    [ "tx_machine_", "classmqi_1_1treatment__session.html#a4bce1973ecc3611fee0b4c1da57bfd1e", null ]
+];

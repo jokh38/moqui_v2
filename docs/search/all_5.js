@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['features_0',['Features',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
+  ['file_5fparser_1',['file_parser',['../classmqi_1_1file__parser.html',1,'mqi::file_parser'],['../classmqi_1_1file__parser.html#adef564c16439683a6c3808a5c35f838f',1,'mqi::file_parser::file_parser(std::string filename, std::string delimeter)']]],
+  ['filename_2',['filename',['../classmqi_1_1file__parser.html#a72996b11ce1bb92bed2b74175e22d876',1,'mqi::file_parser']]],
+  ['files_5f_3',['files_',['../classmqi_1_1ct.html#af900ea2fa59691a67188cb9758e6fd17',1,'mqi::ct']]],
+  ['fill_5fcontour_4',['fill_contour',['../classmqi_1_1tps__env.html#a4cb04ffc9d36486d9143b3de5a8fa355',1,'mqi::tps_env']]],
+  ['fill_5fdata_5',['fill_data',['../classmqi_1_1grid3d.html#a6786dd8af70ec79d2ec59b0dcadf7902',1,'mqi::grid3d::fill_data()'],['../classmqi_1_1rect3d.html#a055c1bc0e745c9bc17f0904ec9aa7064',1,'mqi::rect3d::fill_data()']]],
+  ['finalize_6',['finalize',['../classmqi_1_1x__environment.html#a8e860bd71f938cb81e77a27723b58732',1,'mqi::x_environment']]],
+  ['find_5fc000_5findex_7',['find_c000_index',['../classmqi_1_1rect3d.html#ab702d16ee5d57e4c8705304b2d3ca72f',1,'mqi::rect3d']]],
+  ['find_5fc000_5fx_5findex_8',['find_c000_x_index',['../classmqi_1_1ct.html#a1f7b67f31c5dc422c9788fc5ba48bf57',1,'mqi::ct::find_c000_x_index()'],['../classmqi_1_1rect3d.html#a88854c6a1eea9a6ca7390ef5a5b8637b',1,'mqi::rect3d::find_c000_x_index()']]],
+  ['find_5fc000_5fy_5findex_9',['find_c000_y_index',['../classmqi_1_1ct.html#acd1615301b9bd2186ec668af03c6375d',1,'mqi::ct::find_c000_y_index()'],['../classmqi_1_1rect3d.html#a63d54944c123da333f8eb97c0939c4e7',1,'mqi::rect3d::find_c000_y_index(const R &amp;y)']]],
+  ['find_5fc000_5fz_5findex_10',['find_c000_z_index',['../classmqi_1_1rect3d.html#a9feb4836b6b70fcde1631670fd659131',1,'mqi::rect3d']]],
+  ['fippel_5fphysics_11',['fippel_physics',['../classmqi_1_1fippel__physics.html',1,'mqi::fippel_physics&lt; R &gt;'],['../classmqi_1_1fippel__physics.html#ae89ba7ac1be170e341543283daf20ba4',1,'mqi::fippel_physics::fippel_physics()'],['../classmqi_1_1fippel__physics.html#a41b9e0a38d961e86f094bfc8d2b13a5b',1,'mqi::fippel_physics::fippel_physics(R e_cut)']]],
+  ['flip_5f_12',['flip_',['../classmqi_1_1rect3d.html#a8e8ba757794860625b1e8f5047d187d9',1,'mqi::rect3d']]],
+  ['flip_5fdata_13',['flip_data',['../classmqi_1_1rect3d.html#afb9fec18c86f1e9e15666f2a993f6e97',1,'mqi::rect3d']]],
+  ['flip_5fxyz_5fif_5fany_14',['flip_xyz_if_any',['../classmqi_1_1rect3d.html#a6702e02a48fcc73ee3fddcd8c3af7716',1,'mqi::rect3d']]],
+  ['fluence_15',['fluence',['../classmqi_1_1beamlet.html#a28d82ad9bfcff44c3f23b6a33c609407',1,'mqi::beamlet']]],
+  ['for_20ai_20agents_16',['For AI Agents',['../md__r_e_a_d_m_e.html#autotoc_md16',1,'']]],
+  ['for_20custom_20treatment_20machines_17',['This directory is for custom treatment machines',['../C:/MOQUI_SMC/moqui/treatment_machines/README.md#autotoc_md19',1,'']]],
+  ['fp_5fcompute_5fhit_18',['fp_compute_hit',['../namespacemqi.html#a9a956d4101dbbf59188d16f3e75b05ec',1,'mqi']]],
+  ['func_5f_19',['func_',['../classmqi_1_1norm__1d.html#a40978bdb20960bc568d9ca2beddc306a',1,'mqi::norm_1d::func_'],['../classmqi_1_1phsp__6d.html#a5aaa7b8b3eec7b004a8e6cc1a8da68f0',1,'mqi::phsp_6d::func_'],['../classmqi_1_1phsp__6d__fanbeam.html#a9efa0fa585e5dce2afa331429706bded',1,'mqi::phsp_6d_fanbeam::func_'],['../classmqi_1_1phsp__6d__ray.html#a8b208c2b627d068136d4034d18a14f02',1,'mqi::phsp_6d_ray::func_'],['../classmqi_1_1phsp__6d__uniform.html#a91e757d5397afa5e2b488b391f585e87',1,'mqi::phsp_6d_uniform::func_'],['../classmqi_1_1uni__1d.html#a26a34355f6a474b931b47fb68da891bd',1,'mqi::uni_1d::func_']]],
+  ['fwhm_5fx_20',['fwhm_x',['../structmqi_1_1beam__module__ion_1_1spot.html#a897a8798a78a5c2fb811f3925fc02b2f',1,'mqi::beam_module_ion::spot']]],
+  ['fwhm_5fy_21',['fwhm_y',['../structmqi_1_1beam__module__ion_1_1spot.html#a254dfeec15827409f9f8dc87f6ef2bcd',1,'mqi::beam_module_ion::spot']]]
+];

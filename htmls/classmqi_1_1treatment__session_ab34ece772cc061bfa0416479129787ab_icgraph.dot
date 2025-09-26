@@ -1,0 +1,22 @@
+digraph "mqi::treatment_session::get_beam_names"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::treatment_session\l::get_beam_names",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Retrieves a list of all beam names from the treatment plan."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::tps_env::save\l_files",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1tps__env.html#a007cd1c0f74ea41ea67ec6f3d32fd868",tooltip="Saves the simulation results to binary files."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::tps_env::save\l_reshaped_files",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1tps__env.html#a6c46039ec5f8ad11f01812443d60e050",tooltip="Saves the reshaped simulation results to files in various formats (mhd, mha, raw)."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mqi::tps_env::initialize\l_and_run",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1tps__env.html#ab99846553d1f27bb6b0f7b8ad10aaaaf",tooltip="Initializes and runs the simulation for all specified beams."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$tps__env_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip="The main function for the TPS environment executable."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="mqi::tps_env::save\l_sparse_file",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1tps__env.html#a8704f4b05c3694c287abfba698d12663",tooltip="Saves the simulation results in a sparse format (npz)."];
+  Node6 -> Node4 [id="edge6_Node000006_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node7 [id="edge7_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="mqi::tps_env::setup\l_beamsource",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1tps__env.html#a800faab5c9831316564b5a20e19b0a72",tooltip="Sets up the particle beam source based on the treatment plan and log files."];
+}

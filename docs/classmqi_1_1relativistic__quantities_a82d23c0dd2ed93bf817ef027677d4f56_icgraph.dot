@@ -1,0 +1,13 @@
+digraph "mqi::relativistic_quantities::momentum"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::relativistic_quantities\l::momentum",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Calculates the relativistic momentum of the particle."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::p_ionization_tabulated\l::along_step",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1p__ionization__tabulated.html#a6748a8fea3dd0f180b667eaf483a19f1",tooltip="Simulates continuous effects along a step (energy loss and scattering)."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::pp_elastic_tabulated\l::post_step",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1pp__elastic__tabulated.html#a0571b59ea2a1d58ea70415239f0e4e74",tooltip="Simulates the interaction after a transport step."];
+}

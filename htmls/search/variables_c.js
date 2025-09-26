@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['n001_5f_0',['n001_',['../classmqi_1_1grid3d.html#a42195a26df80991fbae6e5afde2e0669',1,'mqi::grid3d']]],
+  ['n010_5f_1',['n010_',['../classmqi_1_1grid3d.html#aa66730b22503a63baff46311aabba84a',1,'mqi::grid3d']]],
+  ['n100_5f_2',['n100_',['../classmqi_1_1grid3d.html#ad2657701172b0ad96ae808bc9013fdce',1,'mqi::grid3d']]],
+  ['n_5fchildren_3',['n_children',['../structmqi_1_1node__t.html#ae83f6fa62df9bfccab951b973ba29bdf',1,'mqi::node_t']]],
+  ['n_5fdose_4',['n_dose',['../structmqi_1_1dicom__t.html#a286da0cf6ff918b11ccc5e0ddc1d512e',1,'mqi::dicom_t']]],
+  ['n_5fhistories_5',['n_histories',['../classmqi_1_1phantom__env.html#adae3841b70f3aa9c1a44b7a9163e08ba',1,'mqi::phantom_env']]],
+  ['n_5fmaterials_6',['n_materials',['../classmqi_1_1x__environment.html#a7b1178df7157af51937298ae0eda9f40',1,'mqi::x_environment']]],
+  ['n_5fplan_7',['n_plan',['../structmqi_1_1dicom__t.html#ac3ef171c735a1b6abc6be7c3acfc9f03',1,'mqi::dicom_t']]],
+  ['n_5fscorers_8',['n_scorers',['../structmqi_1_1node__t.html#a6d7f37fccb8755147117328b9fa5490b',1,'mqi::node_t']]],
+  ['n_5fstruct_9',['n_struct',['../structmqi_1_1dicom__t.html#a8bfcd3276ce5bb89dcdc4f3832f25337',1,'mqi::dicom_t']]],
+  ['na_10',['nA',['../classmqi_1_1pbs.html#ad47aae21490d787aa8151f69af9be443',1,'mqi::pbs']]],
+  ['name_11',['name',['../structmqi_1_1beam__id__type.html#a5df89e033922150b7e7f1d40712dc4c3',1,'mqi::beam_id_type']]],
+  ['name_5f_12',['name_',['../classmqi_1_1scorer.html#a1f69ddad5b4a8d3ed6ed56674e7cbaf2',1,'mqi::scorer::name_'],['../classmqi_1_1treatment__machine.html#a971733414c8de3c30b3b0e7065dd8386',1,'mqi::treatment_machine::name_']]],
+  ['nb_5fspots_5fper_5flayer_5f_13',['nb_spots_per_layer_',['../classmqi_1_1beam__module__ion.html#a1c689371ede6e5dda539074cadf57041',1,'mqi::beam_module_ion']]],
+  ['near_5fzero_14',['near_zero',['../namespacemqi.html#aa9e653e8380ba6a145adc5f40b37beae',1,'mqi']]],
+  ['nfiles_15',['nfiles',['../structmqi_1_1dicom__t.html#a9110c528f28a8cb05c5b35e38c32a628',1,'mqi::dicom_t']]],
+  ['ns_16',['ns',['../classmqi_1_1pbs.html#a1a650a87cb6f5a1af02b3472fbc07540',1,'mqi::pbs']]],
+  ['num_5fopening_17',['num_opening',['../classmqi_1_1aperture3d.html#a1013f002448e333f689ece24ef64cc8e',1,'mqi::aperture3d']]],
+  ['num_5fsegments_18',['num_segments',['../classmqi_1_1aperture3d.html#a546d40efb4c8887e8a32e26f9016ad7c',1,'mqi::aperture3d']]],
+  ['num_5fspots_19',['num_spots',['../classmqi_1_1x__environment.html#ac8cad9b93b3ab546bde8283b41dc8e7d',1,'mqi::x_environment']]],
+  ['num_5ftotal_5fthreads_20',['num_total_threads',['../classmqi_1_1x__environment.html#ae44e84321c66bb756919b08ad4cb5050',1,'mqi::x_environment']]],
+  ['num_5fvol_21',['num_vol',['../structmqi_1_1dicom__t.html#a9f080a54337f7440bc13f74e471b2600',1,'mqi::dicom_t']]],
+  ['number_22',['number',['../structmqi_1_1beam__id__type.html#a83673494834db8a9a2d2ea542e03d90b',1,'mqi::beam_id_type']]],
+  ['nxyz_23',['nxyz',['../classmqi_1_1phantom__env.html#ac9d9483cce088917c0148d2b4b458f49',1,'mqi::phantom_env']]]
+];

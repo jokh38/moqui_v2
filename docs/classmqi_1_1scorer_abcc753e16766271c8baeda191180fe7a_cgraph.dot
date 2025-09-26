@@ -1,0 +1,13 @@
+digraph "mqi::scorer::insert_pair"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::scorer::insert_pair",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Atomically inserts or adds a value to the hash table."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::scorer::CAS",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1scorer.html#a558b1e41c89691e485567a5072aa5543",tooltip="A host-side implementation of the atomic Compare-And-Swap (CAS) operation."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::scorer::hash_fun",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1scorer.html#ae938d054c9e6cf37840d69f606a92855",tooltip="A hash function to map a key to an index in the hash table."];
+}

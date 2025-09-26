@@ -1,0 +1,11 @@
+digraph "mqi::aperture3d::aperture3d"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mqi::aperture3d::aperture3d",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Constructs an oriented rectilinear grid with aperture information."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::grid3d::grid3d",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1grid3d.html#aca225ded47b2d2bd31fb0273c76f005e",tooltip="Default constructor."];
+}

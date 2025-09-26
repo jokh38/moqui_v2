@@ -1,0 +1,11 @@
+digraph "treatment_machines"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  dir_eccebeb255f65e41c923bdf8eaba63f5 [label="treatment_machines", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_eccebeb255f65e41c923bdf8eaba63f5.html",tooltip=""];
+  dir_e914ee4d4a44400f1fdb170cb4ead18a [label="base", fillcolor="#edf0f7", color="red", style="filled", URL="dir_e914ee4d4a44400f1fdb170cb4ead18a.html",tooltip=""];
+  dir_eccebeb255f65e41c923bdf8eaba63f5->dir_e914ee4d4a44400f1fdb170cb4ead18a [headlabel="6", labeldistance=1.5 headhref="dir_000006_000000.html" href="dir_000006_000000.html" color="steelblue1" fontcolor="steelblue1"];
+}

@@ -1,0 +1,15 @@
+digraph "mqi::patient_material_t::hu_to_density"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::patient_material\l_t::hu_to_density",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Converts a Hounsfield Unit (HU) value to mass density."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::patient_material\l_t::patient_material_t",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1patient__material__t.html#acecd18419823a1174d0b17575903ed15",tooltip="Constructs a patient material from a Hounsfield Unit (HU) value."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::phantom_env::setup\l_world",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1phantom__env.html#af046cc06af737d4856c651346c6e8de9",tooltip="Sets up the world geometry, including the water phantom."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mqi::tps_env::setup\l_world",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1tps__env.html#ad69ee252b1752210a67af91b124c0020",tooltip="Sets up the world geometry, including the patient geometry from CT data and beamline components."];
+}

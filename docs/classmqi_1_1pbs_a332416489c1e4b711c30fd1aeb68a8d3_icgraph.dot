@@ -1,0 +1,11 @@
+digraph "mqi::pbs::load_beamdata"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::pbs::load_beamdata",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Loads machine parameters from a configuration file."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::pbs::pbs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1pbs.html#a151a08d833fa1320df05cc6509b68427",tooltip="Constructor that loads beam data from a file."];
+}

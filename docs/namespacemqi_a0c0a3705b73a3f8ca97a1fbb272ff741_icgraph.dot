@@ -1,0 +1,13 @@
+digraph "mqi::mqi_exp"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mqi::mqi_exp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Calculates the base-e exponential. Wrapper for exp or expf."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mqi::po_inelastic::\lcross_section",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1po__inelastic.html#a9e2c82ee121e4c1e684f97f23a2f2386",tooltip="Calculates the macroscopic cross-section for p-O inelastic scattering."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mqi::po_elastic::post_step",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmqi_1_1po__elastic.html#af9e3974c25f180218772d111779286e7",tooltip="Simulates the p-O elastic scattering event."];
+}
