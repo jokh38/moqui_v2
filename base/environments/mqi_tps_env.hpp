@@ -39,6 +39,8 @@
 #include <moqui/base/scorers/mqi_scorer_energy_deposit.hpp>
 #include <valarray>
 
+#include <moqui/base/mqi_cuda_stubs.hpp>
+
 namespace mqi
 {
 /// \struct dicom_t

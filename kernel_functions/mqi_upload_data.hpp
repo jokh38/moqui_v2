@@ -4,6 +4,7 @@
 #include <moqui/base/mqi_error_check.hpp>
 #include <moqui/base/mqi_roi.hpp>
 #include <moqui/base/mqi_scorer.hpp>
+#include <moqui/base/mqi_cuda_stubs.hpp>
 
 namespace mc
 {
